@@ -17,7 +17,6 @@ formulario.addEventListener('submit',(event)=>{
     // validar o campo
 
     let validate = validateInput(item);
-
     // cria objeto e envia para lista
     if (validate){
         criateObject(item);
@@ -40,6 +39,7 @@ function criateObject(object) {
     let todo = {
         id: String(list.length),
         item: object.value,
+        check:false
     };
     list.push(todo)
     const dataJson = JSON.stringify(list)
@@ -47,13 +47,13 @@ function criateObject(object) {
 
 }
 
-function addNewtags(id,item) {
-    let div = criateDiv('todo',id)
+function addNewtags(id,item, check) {
+    let div = criateDiv('todo', id, check)
     const li = criateli('todo-item',item);
     let i1 = criateI('fas','fa-check');
     let buttonCheck = criateButton('check-btn');
     buttonCheck.append(i1);
-    criateButtoncheck(buttonCheck,div);
+    criateButtoncheck(buttonCheck,div, id);
     let i2 = criateI('fas','fa-trash');
     let buttonTrash = criateButton('trash-btn');
     buttonTrash.append(i2)
@@ -82,10 +82,12 @@ function criateButton(className){
     button.classList.add(className);
     return button;}
 
-function criateButtoncheck(button, div){
+function criateButtoncheck(button, div, id){
     button.addEventListener('click',()=>{
         if (div.classList.value !== 'todo completed'){
+            list[id].check = true
             div.classList.add('completed');
+            localStorage.setItem('items',JSON.stringify(list));
         }else{
             div.classList.remove(div.classList[1]);
         }
@@ -111,10 +113,13 @@ function criateButtonTrash(button, id){
     });
 }
 
-function criateDiv(className, id){
+function criateDiv(className, id, check){
     let div = document.createElement('div');
     div.id = ('div' + id)
     div.classList.add(className)
+    if (check === true){
+        div.classList.add('completed')
+    }
     return div;
 }
 
@@ -123,6 +128,6 @@ function loadList(jList) {
     for (const listKey in jList) {
         item = jList[listKey];
         list.push(item)
-        addNewtags(item.id,item.item)
+        addNewtags(item.id, item.item, item.check)
     }
 }
