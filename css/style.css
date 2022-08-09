@@ -115,7 +115,7 @@ form input,
 }
 
 .todo-item {
-    padding: 0rem 1.2rem;
+    padding: 0 1.2rem;
 }
 
 .fa-trash,
@@ -172,4 +172,40 @@ select {
 .select:hover::after {
     background-color: white;
     color: #1A1A1A;
+}
+
+@media screen and (max-width: 450px) {
+    header h1{
+        text-align: center;
+        width: 250px;
+    }
+
+    form {
+        min-height: 25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .todo-input{
+        width: calc(70% + 50px);
+    }
+
+    .text__form{
+        display: flex;
+        justify-content: center;
+        width: 70%;
+    }
+
+    .select{
+        width:70%;
+    }
+
+    .todo-list{
+        min-width: 84%;
+    }
+
+
+
 }
