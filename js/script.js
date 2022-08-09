@@ -1,14 +1,12 @@
 const data = localStorage.getItem('items')
-const list = JSON.parse(data);
-// localStorage.clear()
-console.log(list)
-
+const jsonData = JSON.parse(data)
+const list = [];
 const formulario = document.querySelector('#form1');
 const ul = document.querySelector('.todo-list')
 
-
-
-loadList(list)
+console.log(jsonData)
+loadList(jsonData)
+console.log(list)
 
 formulario.addEventListener('submit',(event)=>{
     event.preventDefault()
@@ -24,7 +22,7 @@ formulario.addEventListener('submit',(event)=>{
     if (validate){
         criateObject(item);
         // criar o html da lista
-        addNewtags(item.value)
+        addNewtags(item.id,item.value)
     }
 });
 
@@ -40,7 +38,7 @@ function validateInput(item){
 
 function criateObject(object) {
     let todo = {
-        id: String(list.length +1),
+        id: String(list.length),
         item: object.value,
     };
     list.push(todo)
@@ -49,9 +47,8 @@ function criateObject(object) {
 
 }
 
-function addNewtags(item) {
-    console.log(item)
-    let div = criateDiv('todo')
+function addNewtags(id,item) {
+    let div = criateDiv('todo',id)
     const li = criateli('todo-item',item);
     let i1 = criateI('fas','fa-check');
     let buttonCheck = criateButton('check-btn');
@@ -60,7 +57,7 @@ function addNewtags(item) {
     let i2 = criateI('fas','fa-trash');
     let buttonTrash = criateButton('trash-btn');
     buttonTrash.append(i2)
-    criateButtonTrash(buttonTrash)
+    criateButtonTrash(buttonTrash,id)
 
     div.append(li);
     div.append(buttonCheck);
@@ -69,7 +66,6 @@ function addNewtags(item) {
 }
 
 function criateli(className, item) {
-    console.log(item)
     let li = document.createElement('li');
     li.classList.add(className);
     li.innerHTML = item;
@@ -95,16 +91,18 @@ function criateButtoncheck(button, div){
         }
     })}
 
-function criateButtonTrash(button){
-    button.id = String(list.length);
+// remove tag
+function criateButtonTrash(button, id){
+    button.id = id;
     button.addEventListener('click',(b)=>{
         let button = b.target;
         let id = button.id
         for (const idKey in list) {
             if (id === list[idKey].id){
+                let remData = list[idKey];
+                console.log(remData)
                 list.splice(Number(idKey),1);
-                const dataJson = JSON.stringify(list)
-                localStorage.setItem('items',dataJson)
+                localStorage.setItem('items',JSON.stringify(list));
             }
         }
         let liRemove = document.querySelector('#div'+id);
@@ -113,18 +111,18 @@ function criateButtonTrash(button){
     });
 }
 
-function criateDiv(className){
+function criateDiv(className, id){
     let div = document.createElement('div');
-    div.id = 'div' + list.length
+    div.id = ('div' + id)
     div.classList.add(className)
     return div;
 }
 
-function loadList(list) {
+function loadList(jList) {
     let item;
-    for (const listKey in list) {
-        item = list[listKey];
-    console.log(item.item)
-        addNewtags(item.item)
+    for (const listKey in jList) {
+        item = jList[listKey];
+        list.push(item)
+        addNewtags(item.id,item.item)
     }
 }
