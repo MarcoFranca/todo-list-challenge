@@ -4,7 +4,6 @@ const list = [];
 const formulario = document.querySelector('#form1');
 const ul = document.querySelector('.todo-list')
 
-console.log(jsonData)
 loadList(jsonData)
 console.log(list)
 
@@ -21,9 +20,13 @@ formulario.addEventListener('submit',(event)=>{
     if (validate){
         criateObject(item);
         // criar o html da lista
-        addNewtags(item.id,item.value)
+        addNewtags((list.length -1), item.value)
     }
 });
+
+document.addEventListener("change", ()=>{
+    filter()
+} )
 
 // *******funções**********
 
@@ -86,10 +89,13 @@ function criateButtoncheck(button, div, id){
     button.addEventListener('click',()=>{
         if (div.classList.value !== 'todo completed'){
             list[id].check = true
+            console.log(list[id].check)
             div.classList.add('completed');
             localStorage.setItem('items',JSON.stringify(list));
         }else{
             div.classList.remove(div.classList[1]);
+            list[id].check = false
+            localStorage.setItem('items',JSON.stringify(list));
         }
     })}
 
@@ -101,8 +107,6 @@ function criateButtonTrash(button, id){
         let id = button.id
         for (const idKey in list) {
             if (id === list[idKey].id){
-                let remData = list[idKey];
-                console.log(remData)
                 list.splice(Number(idKey),1);
                 localStorage.setItem('items',JSON.stringify(list));
             }
@@ -116,8 +120,10 @@ function criateButtonTrash(button, id){
 function criateDiv(className, id, check){
     let div = document.createElement('div');
     div.id = ('div' + id)
-    div.classList.add(className)
-    if (check === true){
+    if (!check === true){
+        div.classList.add(className)
+    }else {
+        div.classList.add(className)
         div.classList.add('completed')
     }
     return div;
@@ -129,5 +135,51 @@ function loadList(jList) {
         item = jList[listKey];
         list.push(item)
         addNewtags(item.id, item.item, item.check)
+        console.log(item.check)
     }
 }
+
+function filter () {
+    let selection = document.querySelector('.filter-todo')
+    let option = selection.options[selection.selectedIndex]
+
+    stateOption(option.value)
+
+
+    console.log(option.value)
+}
+
+function stateOption (option){
+    let listFalse = list.filter(filterUnCheck)
+    let listTrue = list.filter(filterCheck);
+    let stateFalse;
+    let stateTrue;
+
+    if (option === "completed"){
+        stateFalse = "none"
+        stateTrue = "flex"
+    }else if(option === "uncompleted"){
+        stateFalse = "flex"
+        stateTrue = "none"
+    }else{
+        stateFalse = "flex"
+        stateTrue = "flex"
+    }
+
+    for (const listKey in listTrue) {
+        document.querySelector('#div'+listTrue[listKey].id).style.display = stateTrue;
+    }
+    for (const listKey in listFalse) {
+        document.querySelector('#div'+listFalse[listKey].id).style.display = stateFalse;
+    }
+}
+
+function filterCheck (value){
+    if (value.check === true){
+        return value
+    }}
+
+function filterUnCheck (value){
+    if (!value.check === true){
+        return value
+    }}
