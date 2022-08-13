@@ -29,15 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-_**Mobile**_
-
-![gif of template](./readme/localhost_63342_FULLTURE_index.html__ijt=6v837c8o3sq64t9ikj9d5kthus&_ij_reload=RELOAD_ON_SAVE(iPhone%20XR).png)
-
-_**desktop**_
-![gif of template](./readme/localhost_63342_FULLTURE_index.html__ijt=6v837c8o3sq64t9ikj9d5kthus&_ij_reload=RELOAD_ON_SAVE(Nest%20Hub%20Max).png)
-
-_**desktop | filter**_
-![gif of template](./readme/localhost_63342_FULLTURE_index.html__ijt=6v837c8o3sq64t9ikj9d5kthus&_ij_reload=RELOAD_ON_SAVE(Nest%20Hub%20Max)%20(1).png)
+![gif of template](./readme/scream.jpg)
 
 ### Links
 
