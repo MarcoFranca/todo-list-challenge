@@ -12,6 +12,7 @@ function validateInput(item){
 
 function criateObject(object) {
     let todo = {
+        //mudar o string
         id: String(list.length),
         item: object.value,
         check:false
@@ -57,6 +58,7 @@ function criateDiv(className, id, check){
     let div = document.createElement('div');
     div.id = ('div' + id)
     if (!check === true){
+        //toglle
         div.classList.add(className)
     }else {
         div.classList.add(className)
@@ -89,8 +91,7 @@ function criateButtoncheck(button, div, id){
 function criateButtonTrash(button, id){
     button.id = id;
     button.addEventListener('click',(b)=>{
-        let button = b.target;
-        let id = button.id
+        let id = b.target.id;
         for (const idKey in list) {
             if (id === list[idKey].id){
                 list.splice(Number(idKey),1);
@@ -146,11 +147,11 @@ function stateOption (option){
 }
 
 function filterCheck (value){
-    if (value.check === true){
+    if (value.check){
         return value
     }}
 
 function filterUnCheck (value){
-    if (!value.check === true){
+    if (!value.check){
         return value
     }}

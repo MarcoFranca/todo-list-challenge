@@ -1,13 +1,17 @@
+const logado = window.sessionStorage.getItem('logado')
+
 const data = localStorage.getItem('items')
 const jsonData = JSON.parse(data)
 const list = [];
 const form = document.querySelector('#form1');
 const ul = document.querySelector('.todo-list')
 
-loadList(jsonData)
+
 
 //*******formulary submit *********
-
+console.log(logado)
+if (JSON.parse(logado) === true){
+    loadList(jsonData)
 form.addEventListener('submit',(event)=>{
     event.preventDefault()
 
@@ -29,4 +33,6 @@ form.addEventListener('submit',(event)=>{
 document.addEventListener("change", ()=>{
     filter()
 } )
-
+}else {
+    window.location = 'e.html'
+}
