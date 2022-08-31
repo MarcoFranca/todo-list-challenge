@@ -174,8 +174,54 @@ select {
     color: #1A1A1A;
 }
 
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.login-form__login{
+    display: flex;
+    flex-direction: initial;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 40rem;
+}
+
+
+.label{
+    width: 10rem;
+}
+
+.login-form__passwd{
+    display: flex;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 40rem;
+}
+
+.login-form__passwd input{
+    margin-right: -5.5rem;
+}
+
+.btn-login{
+    width: 5.5rem;
+}
+
+.login-form__passwd__content{
+    display: flex;
+}
+
+.btn-login:hover{
+    background-color: darkorange;
+    transition: 0.3s;
+
+}
+
 @media screen and (max-width: 450px) {
-    header h1{
+    header h1 {
         text-align: center;
         width: 250px;
     }
@@ -188,24 +234,57 @@ select {
         align-items: center;
     }
 
-    .todo-input{
+    .todo-input {
         width: calc(70% + 50px);
     }
 
-    .text__form{
+    .text__form {
         display: flex;
         justify-content: center;
         width: 70%;
     }
 
-    .select{
-        width:70%;
+    .select {
+        width: 70%;
     }
 
-    .todo-list{
+    .todo-list {
         min-width: 84%;
     }
 
+    /*login*/
+    .login-form__login {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        gap: 1rem;
+        font-size: 1.5rem;
+        width: 20rem;
+    }
 
 
+    .label {
+        width: 10rem;
+    }
+
+    .login-form__passwd{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        gap: 1rem;
+        font-size: 1.5rem;
+        width: 20rem;
+    }
+
+    .login-form__passwd__content{
+        display: flex;
+    }
+
+    .passwd{
+        width: 15rem;
+    }
+
+    .login-form__passwd input{
+        margin-right: -3.5rem;
+    }
 }
