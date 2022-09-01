@@ -56,13 +56,13 @@ and how to use `JSON`:**_
 inserting the `tag` itself, the `class` or the `id`.
 
 ```javascript
-form = document.querySelector('#form1');
+form1 = document.querySelector('#form1');
 ```
 
 - I learned that it is possible to use `form` instead of `document` for faster processing.
 
 ```javascript
- let item = form.querySelector('.todo-input');
+ let item = form1.querySelector('.todo-input');
 ```
 
 - I learned that it is possible to use `event.preventDefault()` to remove predefined events,

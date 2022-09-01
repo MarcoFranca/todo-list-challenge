@@ -325,6 +325,11 @@ select {
         width: calc(70% + 50px);
     }
 
+    #form1{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
     .text__form {
         display: flex;
         justify-content: center;

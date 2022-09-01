@@ -1,15 +1,16 @@
-const data = localStorage.getItem('users')
+const dataLogin = localStorage.getItem('users')
 const openModal = document.querySelector('#openModal')
 const closeModal = document.querySelector('#closeModal')
 const fade = document.querySelector('#fade')
 const newLogin = document.querySelector('#crtLog')
 const newPass = document.querySelector('#crtPass')
 
-const jsonUsers = JSON.parse(data)
+const jsonUsers = JSON.parse(dataLogin)
 
 const users = []
 
 let validate = false;
+
 getJson()
 
 const form = document.querySelector('#form2')
@@ -19,14 +20,15 @@ form.addEventListener('submit',(event)=>{
     const inputPasswd = form.querySelector('#password')
 
     validateLogin(inputLogin.value, inputPasswd.value)
-    console.log(validate)
-    if (validate){
 
+    if (validate){
         window.sessionStorage.setItem('logado', 'true');
         window.location = 'index.html'
 
     }else {
         window.sessionStorage.setItem('logado', 'false');
+        inputLogin.value = ''
+        inputPasswd.value = ''
         console.error('senha ou login invalido')
         alert('senha ou login invalido')
     }
@@ -67,9 +69,12 @@ function createAcoint(login, senha){
 }
 
 function getJson() {
-    jsonUsers.forEach((e)=>{
-        users.push(e)
-    })}
+    if (jsonUsers !== null) {
+        jsonUsers.forEach((e) => {
+            users.push(e)
+        })
+    }
+}
 
 function validateLogin (login, password){
     users.forEach((e)=>{

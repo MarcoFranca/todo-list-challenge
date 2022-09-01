@@ -12,7 +12,6 @@ function validateInput(item){
 
 function criateObject(object) {
     let todo = {
-        //mudar o string
         id: String(list.length),
         item: object.value,
         check:false

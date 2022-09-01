@@ -4,7 +4,7 @@ const data = localStorage.getItem('items')
 const jsonData = JSON.parse(data)
 
 const list = [];
-const form = document.querySelector('#form1');
+const form1 = document.querySelector('#form1');
 const ul = document.querySelector('.todo-list')
 
 
@@ -13,11 +13,12 @@ const ul = document.querySelector('.todo-list')
 console.log(logado)
 if (JSON.parse(logado) === true){
     loadList(jsonData)
-form.addEventListener('submit',(event)=>{
+
+form1.addEventListener('submit',(event)=>{
     event.preventDefault()
 
     // capturar o elemento
-    let item = form.querySelector('.todo-input');
+    let item = form1.querySelector('.todo-input');
 
     // validar o campo
 
@@ -31,6 +32,7 @@ form.addEventListener('submit',(event)=>{
         // criar o html da lista
 
         addNewtags((list.length -1), item.value)
+        item.value = ''
     }
 });
 
