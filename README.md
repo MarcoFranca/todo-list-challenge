@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![gif of template](./readme/scream.jpg)
+![gif of template](assets/readme/scream.jpg)
 
 ### Links
 
