@@ -13,23 +13,37 @@
 </head>
 <body>
 <header>
-    <h1>FULLTURE To do List - login </h1>
+    <h1 class="title-login">FULLTURE To do List - login </h1>
 </header>
-<form class="login-form">
-    <label for="login" class="login-form__login"><span class="label">Login</span>
-        <input id="login" type="text" class="todo-input">
-    </label>
+<main class="main">
+    <div class="main__content">
+        <form id="form2" class="login-form">
+            <label for="login" class="login-form__login">
+                <input id="login" type="text" class="todo-input" placeholder="login">
+            </label>
 
-    <label for="password" class="login-form__passwd"><span class="label">Senha</span>
-        <div class="login-form__passwd__content">
-            <input id="password" type="password" class="passwd">
-            <input type="submit" value="Entrar" class="check-btn btn-login">
+            <label for="password" class="login-form__passwd">
+                <div class="login-form__passwd__content">
+                    <input id="password" type="password" class="passwd" placeholder="password">
+                    <input type="submit" value="Entrar" class="check-btn btn-login">
+                </div>
+            </label>
+        </form>
+        <button id="openModal" class="criate-btn">Criar Conta</button>
+
+        <!--        modal-->
+
+        <div id="fade" class="fade hide"></div>
+        <div id="modal" class="card hide">
+            <h2 class="text-m">Insira o login e senha para o cadastro</h2>
+            <form id="form3" class="modal__form">
+                <input id="crtLog" type="text" placeholder="login">
+                <input id="crtPass" type="password" placeholder="password">
+                <input id="closeModal" type="submit" value="Criar conta" class="modal-btn">
+            </form>
         </div>
-    </label>
+    </div>
 
-    <p>login: admin</p>
-    <p>senha: 12345</p>
-</form>
-
+</main>
 </body>
 </html>
