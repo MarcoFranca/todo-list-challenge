@@ -51,11 +51,21 @@ function toggleModal (){
 
 closeModal.addEventListener('click',(event) =>{
     event.preventDefault()
-    if (newLogin.value.length >= 5 &&
+        let userCa = true
+            users.forEach((user)=>{
+            if (user.login === newLogin.value){
+                alert('usuario existente, tente outro')
+                console.error('usuario existente')
+                userCa = false
+            }})
+
+    if (userCa === true && newLogin.value.length >= 3 &&
         newPass.value.length >= 5){
         createAcoint(newLogin.value, newPass.value)
         console.log('sucesso')
-    }else {
+        alert('conta criada com sucesso')
+        toggleModal()
+    }else if (userCa !== false){
         alert('digite um login e uma senha com mais de 5 caracteres')
         console.error('compo não pode ser vazio')
     }
