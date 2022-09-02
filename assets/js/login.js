@@ -24,6 +24,7 @@ form.addEventListener('submit',(event)=>{
     if (validate){
         window.sessionStorage.setItem('logado', 'true');
         window.location = 'index.html'
+        window.sessionStorage.setItem('userOn', inputLogin.value)
 
     }else {
         window.sessionStorage.setItem('logado', 'false');
@@ -33,6 +34,7 @@ form.addEventListener('submit',(event)=>{
         alert('senha ou login invalido')
     }
 })
+
 
 //******* modal criate acount *********
 

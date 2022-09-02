@@ -1,3 +1,5 @@
+const userLog = window.sessionStorage.getItem('userOn')
+
 // ******* validate **********
 
 function validateInput(item){
@@ -10,16 +12,18 @@ function validateInput(item){
 
 //*******criate objects of list *********
 
+
 function criateObject(object) {
     let todo = {
         id: String(Math.floor(Math.random() * 1000 + 1)),
         item: object.value,
         check:false
     };
+
     addNewtags(todo.id, todo.item)
     list.push(todo)
     const dataJson = JSON.stringify(list)
-    localStorage.setItem('items',dataJson)
+    localStorage.setItem(userLog,dataJson)
 }
 
 //*******criate tags *********
@@ -82,11 +86,11 @@ function criateButtoncheck(button, div, id){
                 if (div.classList.value !== 'todo completed'){
                     e.check = true
                     div.classList.add('completed');
-                    localStorage.setItem('items',JSON.stringify(list));
+                    localStorage.setItem(userLog,JSON.stringify(list));
                 }else{
                 div.classList.remove(div.classList[1]);
                 e.check = false
-                localStorage.setItem('items',JSON.stringify(list));
+                localStorage.setItem(userLog,JSON.stringify(list));
             }}})})}
 
 //*******remove tags*********
@@ -98,7 +102,7 @@ function criateButtonTrash(button, id){
         for (const idKey in list) {
             if (id === list[idKey].id){
                 list.splice(Number(idKey),1);
-                localStorage.setItem('items',JSON.stringify(list));
+                localStorage.setItem(userLog,JSON.stringify(list));
             }}
         let liRemove = document.querySelector('#div'+id);
         ul.removeChild(liRemove);

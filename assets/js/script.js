@@ -1,6 +1,6 @@
 const logado = window.sessionStorage.getItem('logado')
 
-const data = localStorage.getItem('items')
+const data = localStorage.getItem(userLog)
 const jsonData = JSON.parse(data)
 
 const list = [];
