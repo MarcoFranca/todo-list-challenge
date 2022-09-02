@@ -168,6 +168,9 @@ select {
     pointer-events: none;
     transition: all 0.3s ease;
 }
+header{
+    height: 15rem;
+}
 
 .select:hover::after {
     background-color: white;
@@ -451,13 +454,6 @@ select {
         width: 100%;
         justify-content: center;
     }
-
-    /*#user{*/
-    /*    position: absolute;*/
-    /*    top: 0;*/
-    /*    left: 0;*/
-    /*}*/
-
 
 
 }
