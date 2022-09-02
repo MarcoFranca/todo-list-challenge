@@ -13,6 +13,7 @@ const ul = document.querySelector('.todo-list')
 console.log(logado)
 if (JSON.parse(logado) === true){
     loadList(jsonData)
+    userName ()
 
 form1.addEventListener('submit',(event)=>{
     event.preventDefault()
@@ -31,6 +32,7 @@ form1.addEventListener('submit',(event)=>{
         criateObject(item);
         item.value = ''
     }
+
 });
 
 //******* option selection event for display change *********
@@ -38,6 +40,12 @@ form1.addEventListener('submit',(event)=>{
 document.addEventListener("change", ()=>{
     filter()
 } )
+
+    document.querySelector('#logaut').addEventListener('click', () =>{
+        window.location = 'login.html'
+        window.sessionStorage.setItem('logado', 'false')
+    })
+
 }else {
     window.location = 'login.html'
 }

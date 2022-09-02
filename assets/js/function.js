@@ -160,3 +160,7 @@ function filterUnCheck (value){
     if (!value.check){
         return value
     }}
+
+function userName (){
+ document.querySelector('#user').textContent = userLog
+}

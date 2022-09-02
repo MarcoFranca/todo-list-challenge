@@ -242,6 +242,38 @@ select {
     width: 100%;
 }
 
+.btn{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    width: 100%;
+    justify-content: right;
+}
+
+
+.criate-btn-logaut{
+    padding: 1rem;
+    background-color: darkslateblue;
+    border-radius: .5rem;
+    border: none;
+    color: #f4f4f4;
+    font-size: 1rem;
+    opacity: .8;
+    width: 13rem;
+}
+
+.criate-btn-logaut:hover{
+    padding: 1rem;
+    background-color: rgba(72, 61, 139, 0.7);
+    border-radius: .5rem;
+    border: none;
+    color: #f4f4f4;
+    font-size: 1rem;
+    opacity: .8;
+    width: 13rem;
+}
+
 .criate-btn:hover{
     opacity: 1;
     transition: .4s;
@@ -314,6 +346,17 @@ select {
 #modal.hide{
     top: 0;
 }
+
+.welcome{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+#user{
+    margin-left: 0.4rem ;
+}
+
 
 @media screen and (max-width: 450px) {
 
@@ -399,6 +442,21 @@ select {
     .criate-btn{
         width: 80%;
     }
+
+    .btn{
+        display: flex;
+        position: absolute;
+        top: 12rem;
+        right: auto;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /*#user{*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*    left: 0;*/
+    /*}*/
 
 
 
