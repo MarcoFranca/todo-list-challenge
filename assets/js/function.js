@@ -12,10 +12,11 @@ function validateInput(item){
 
 function criateObject(object) {
     let todo = {
-        id: String(list.length),
+        id: String(Math.floor(Math.random() * 1000 + 1)),
         item: object.value,
         check:false
     };
+    addNewtags(todo.id, todo.item)
     list.push(todo)
     const dataJson = JSON.stringify(list)
     localStorage.setItem('items',dataJson)
@@ -74,16 +75,19 @@ function criateButton(className){
     return button;}
 
 function criateButtoncheck(button, div, id){
+    button.id = id
     button.addEventListener('click',()=>{
-        if (div.classList.value !== 'todo completed'){
-            list[id].check = true
-            div.classList.add('completed');
-            localStorage.setItem('items',JSON.stringify(list));
-        }else{
-            div.classList.remove(div.classList[1]);
-            list[id].check = false
-            localStorage.setItem('items',JSON.stringify(list));
-        }})}
+        list.forEach((e)=>{
+            if (button.id === e.id){
+                if (div.classList.value !== 'todo completed'){
+                    e.check = true
+                    div.classList.add('completed');
+                    localStorage.setItem('items',JSON.stringify(list));
+                }else{
+                div.classList.remove(div.classList[1]);
+                e.check = false
+                localStorage.setItem('items',JSON.stringify(list));
+            }}})})}
 
 //*******remove tags*********
 
@@ -104,11 +108,9 @@ function criateButtonTrash(button, id){
 //*******load JSON list*********
 
 function loadList(jList) {
-    let item;
     for (const listKey in jList) {
-        item = jList[listKey];
-        list.push(item)
-        addNewtags(item.id, item.item, item.check)
+        list.push(jList[listKey])
+        addNewtags(jList[listKey].id, jList[listKey].item, jList[listKey].check)
     }
 }
 

@@ -27,11 +27,8 @@ form1.addEventListener('submit',(event)=>{
     // cria objeto e envia para lista
 
     if (validate){
-        criateObject(item);
-
         // criar o html da lista
-
-        addNewtags((list.length -1), item.value)
+        criateObject(item);
         item.value = ''
     }
 });
