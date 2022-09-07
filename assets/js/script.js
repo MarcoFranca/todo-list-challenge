@@ -10,7 +10,6 @@ const ul = document.querySelector('.todo-list')
 
 //******* formulary submit *********
 
-console.log(logado)
 if (JSON.parse(logado) === true){
     loadList(jsonData)
     userName ()
@@ -41,7 +40,7 @@ document.addEventListener("change", ()=>{
     filter()
 } )
 
-    document.querySelector('#logaut').addEventListener('click', () =>{
+    document.querySelector('#logout').addEventListener('click', () =>{
         window.location = 'login.html'
         window.sessionStorage.setItem('logado', 'false')
     })

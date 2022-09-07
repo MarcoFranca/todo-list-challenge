@@ -255,7 +255,7 @@ header{
 }
 
 
-.criate-btn-logaut{
+.criate-btn-logout{
     padding: 1rem;
     background-color: darkslateblue;
     border-radius: .5rem;
@@ -266,7 +266,7 @@ header{
     width: 13rem;
 }
 
-.criate-btn-logaut:hover{
+.criate-btn-logout:hover{
     padding: 1rem;
     background-color: rgba(72, 61, 139, 0.7);
     border-radius: .5rem;
